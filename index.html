@@ -1,0 +1,221 @@
+<!-- ============================================
+FILE: /krayvo-website/index.html
+KRAYVO Homepage — Enhanced with platform integration
+============================================ -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KRAYVO — Discover Products Across All Marketplaces</title>
+    <meta name="description" content="KRAYVO lets you discover, compare, and shop products from Amazon, Flipkart, Myntra, Ajio, Meesho, and Savana — all in one place.">
+    <link rel="canonical" href="https://krayvo.com/">
+    <meta property="og:title" content="KRAYVO — Multi-Marketplace Product Discovery">
+    <meta property="og:description" content="Discover products across Amazon, Flipkart, Myntra, Ajio, Meesho & Savana. One search, all platforms.">
+    <meta property="og:image" content="images/og-image.jpg">
+    <meta property="og:url" content="https://krayvo.com/">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="KRAYVO — Multi-Marketplace Discovery">
+    <meta name="twitter:description" content="Discover products across all major ecommerce platforms in one place.">
+    <link rel="icon" href="images/favicon.ico" type="image/x-icon">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/responsive.css">
+    <link rel="stylesheet" href="css/animations.css">
+    <link rel="stylesheet" href="css/platform-styles.css">
+    <link rel="manifest" href="seo/manifest.json">
+    <script type="application/ld+json">
+        {
+            "@context": "https://schema.org",
+            "@type": "WebSite",
+            "name": "KRAYVO",
+            "url": "https://krayvo.com/",
+            "potentialAction": {
+                "@type": "SearchAction",
+                "target": "https://krayvo.com/explore?q={search_term_string}",
+                "query-input": "required name=search_term_string"
+            }
+        }
+    </script>
+</head>
+<body>
+    <!-- Toast Container -->
+    <div id="toast-container" aria-live="polite"></div>
+
+    <!-- Header Component -->
+    <header id="app-header" class="site-header glass-header">
+        <div class="header-inner">
+            <a href="index.html" class="logo-link" aria-label="KRAYVO Home">
+                <img src="images/krayvo-logo.png" alt="KRAYVO Logo" class="logo-img" width="140" height="40" loading="eager">
+            </a>
+            <nav class="main-nav" aria-label="Main navigation">
+                <a href="pages/explore.html" class="nav-link">Explore</a>
+                <a href="pages/categories.html" class="nav-link">Categories</a>
+                <a href="pages/deals.html" class="nav-link">Deals</a>
+                <a href="pages/wishlist.html" class="nav-link wishlist-nav-link">
+                    <span class="wishlist-icon">♡</span>
+                    <span class="wishlist-count" id="header-wishlist-count">0</span>
+                </a>
+                <button class="theme-toggle" id="theme-toggle" aria-label="Toggle dark mode">
+                    <span class="theme-icon">🌙</span>
+                </button>
+            </nav>
+            <button class="mobile-menu-btn" aria-label="Menu" id="mobile-menu-btn">
+                <span></span><span></span><span></span>
+            </button>
+        </div>
+    </header>
+
+    <!-- Mobile Nav Overlay -->
+    <div class="mobile-nav-overlay" id="mobile-nav-overlay">
+        <nav class="mobile-nav">
+            <a href="pages/explore.html">Explore</a>
+            <a href="pages/categories.html">Categories</a>
+            <a href="pages/deals.html">Deals</a>
+            <a href="pages/wishlist.html">Wishlist</a>
+            <a href="pages/about.html">About</a>
+            <a href="pages/contact.html">Contact</a>
+        </nav>
+    </div>
+
+    <!-- Main Content -->
+    <main id="main-content">
+        <!-- Hero Section — Compressed -->
+        <section class="hero-section" aria-label="Search and discover">
+            <div class="hero-bg-gradient"></div>
+            <div class="hero-content">
+                <h1 class="hero-title">Discover Products Across <span class="highlight">All Marketplaces</span></h1>
+                <p class="hero-subtitle">One search. Six platforms. Endless possibilities.</p>
+                <div class="search-container compact-search" id="search-container">
+                    <div class="search-input-wrapper">
+                        <svg class="search-icon-svg" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg>
+                        <input type="text" id="global-search" class="search-input" placeholder="Search products, brands, categories..." autocomplete="off" aria-label="Search products">
+                        <button class="search-clear-btn" id="search-clear" aria-label="Clear search" style="display:none;">×</button>
+                    </div>
+                    <div class="search-autocomplete" id="search-autocomplete" style="display:none;"></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Platform Bar -->
+        <section class="platform-bar-section" aria-label="Ecommerce platforms">
+            <div class="platform-bar" id="platform-bar">
+                <button class="platform-btn active" data-platform="all" aria-label="Show all products">
+                    <span class="platform-dot all-dot"></span> All
+                </button>
+                <button class="platform-btn" data-platform="amazon" aria-label="Browse Amazon">
+                    <span class="platform-dot amazon-dot"></span> Amazon
+                </button>
+                <button class="platform-btn" data-platform="flipkart" aria-label="Browse Flipkart">
+                    <span class="platform-dot flipkart-dot"></span> Flipkart
+                </button>
+                <button class="platform-btn" data-platform="myntra" aria-label="Browse Myntra">
+                    <span class="platform-dot myntra-dot"></span> Myntra
+                </button>
+                <button class="platform-btn" data-platform="ajio" aria-label="Browse Ajio">
+                    <span class="platform-dot ajio-dot"></span> Ajio
+                </button>
+                <button class="platform-btn" data-platform="meesho" aria-label="Browse Meesho">
+                    <span class="platform-dot meesho-dot"></span> Meesho
+                </button>
+                <button class="platform-btn" data-platform="savana" aria-label="Browse Savana">
+                    <span class="platform-dot savana-dot"></span> Savana
+                </button>
+            </div>
+        </section>
+
+        <!-- Category Tabs -->
+        <section class="category-tabs-section" aria-label="Category filters">
+            <div class="category-tabs" id="category-tabs">
+                <button class="cat-tab active" data-category="all">For You</button>
+                <button class="cat-tab" data-category="mobile">Mobile</button>
+                <button class="cat-tab" data-category="fashion">Fashion</button>
+                <button class="cat-tab" data-category="beauty">Beauty</button>
+                <button class="cat-tab" data-category="electronics">Electronics</button>
+                <button class="cat-tab" data-category="home">Home & Kitchen</button>
+                <button class="cat-tab" data-category="accessories">Accessories</button>
+                <button class="cat-tab" data-category="books">Books</button>
+            </div>
+        </section>
+
+        <!-- Product / Platform Display Area -->
+        <section class="content-display-area" id="content-display-area" aria-label="Product listings">
+            <!-- Loading Skeleton -->
+            <div class="loading-skeleton" id="loading-skeleton" style="display:none;">
+                <div class="skeleton-grid">
+                    <div class="skeleton-card"></div><div class="skeleton-card"></div>
+                    <div class="skeleton-card"></div><div class="skeleton-card"></div>
+                    <div class="skeleton-card"></div><div class="skeleton-card"></div>
+                    <div class="skeleton-card"></div><div class="skeleton-card"></div>
+                </div>
+            </div>
+            <!-- Product Grid -->
+            <div class="product-grid" id="product-grid"></div>
+            <!-- Platform Iframe Container -->
+            <div class="platform-container" id="platform-container" style="display:none;">
+                <div class="platform-transition" id="platform-transition"></div>
+                <iframe id="platform-iframe" class="platform-iframe" sandbox="allow-scripts allow-same-origin allow-popups allow-forms" loading="lazy" title="Platform browser"></iframe>
+                <div class="platform-gateway-overlay" id="platform-gateway-overlay" style="display:none;"></div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer Component -->
+    <footer id="app-footer" class="site-footer">
+        <div class="footer-inner">
+            <div class="footer-col">
+                <h4>KRAYVO</h4>
+                <p>Your gateway to smarter shopping across all marketplaces.</p>
+            </div>
+            <div class="footer-col">
+                <h4>Explore</h4>
+                <a href="pages/explore.html">All Products</a>
+                <a href="pages/categories.html">Categories</a>
+                <a href="pages/deals.html">Deals</a>
+                <a href="pages/trending.html">Trending</a>
+                <a href="pages/new-arrivals.html">New Arrivals</a>
+            </div>
+            <div class="footer-col">
+                <h4>Tools</h4>
+                <a href="pages/compare.html">Compare</a>
+                <a href="pages/wishlist.html">Wishlist</a>
+                <a href="pages/recently-viewed.html">Recently Viewed</a>
+                <a href="pages/collections.html">Collections</a>
+            </div>
+            <div class="footer-col">
+                <h4>Company</h4>
+                <a href="pages/about.html">About</a>
+                <a href="pages/contact.html">Contact</a>
+                <a href="pages/blog.html">Blog</a>
+                <a href="pages/careers.html">Careers</a>
+                <a href="pages/press.html">Press</a>
+            </div>
+            <div class="footer-col">
+                <h4>Support</h4>
+                <a href="pages/help-center.html">Help Center</a>
+                <a href="pages/faq.html">FAQ</a>
+                <a href="pages/privacy-policy.html">Privacy Policy</a>
+                <a href="pages/terms.html">Terms</a>
+                <a href="pages/sitemap.html">Sitemap</a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 KRAYVO. All rights reserved. | <a href="pages/disclaimer.html">Disclaimer</a> | <a href="pages/accessibility.html">Accessibility</a></p>
+        </div>
+    </footer>
+
+    <!-- Firebase SDK -->
+    <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore-compat.js"></script>
+    <!-- App Scripts -->
+    <script src="js/firebase.js"></script>
+    <script src="js/utils.js"></script>
+    <script src="js/platforms.js"></script>
+    <script src="js/wishlist.js"></script>
+    <script src="js/search.js"></script>
+    <script src="js/seo.js"></script>
+    <script src="js/script.js"></script>
+</body>
+</html>
