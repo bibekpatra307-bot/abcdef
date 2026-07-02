@@ -1,0 +1,89 @@
+/* ============================================
+FILE: /krayvo-website/css/platform-styles.css
+Platform-specific Iframe & Poster Styles
+============================================ */
+
+/* Platform container smooth transitions */
+.platform-container {
+    background: var(--surface);
+    box-shadow: var(--shadow);
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Iframe base styling */
+.platform-iframe {
+    background: #fff;
+    border-radius: var(--radius);
+}
+
+/* Gateway overlay cursor */
+.platform-gateway-overlay {
+    transition: background 0.15s ease;
+}
+.platform-gateway-overlay:hover {
+    background: rgba(99, 102, 241, 0.03);
+}
+.platform-gateway-overlay:active {
+    background: rgba(99, 102, 241, 0.06);
+}
+
+/* Platform transition loader */
+.platform-transition {
+    background: var(--bg);
+    border-radius: var(--radius);
+}
+.platform-transition .loader-dots {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+    justify-content: center;
+}
+.platform-transition .loader-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: var(--primary);
+    animation: dotBounce 0.6s infinite alternate;
+}
+.platform-transition .loader-dot:nth-child(2) {
+    animation-delay: 0.2s;
+}
+.platform-transition .loader-dot:nth-child(3) {
+    animation-delay: 0.4s;
+}
+@keyframes dotBounce {
+    from {
+        transform: translateY(0);
+        opacity: 0.5;
+    }
+    to {
+        transform: translateY(-10px);
+        opacity: 1;
+    }
+}
+
+/* Active platform indicator pulse */
+.platform-btn.active {
+    position: relative;
+}
+.platform-btn.active::after {
+    content: '';
+    position: absolute;
+    bottom: 2px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: #fff;
+    animation: pulseDot 1.5s infinite;
+}
+@keyframes pulseDot {
+    0%,
+    100% {
+        box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.6);
+    }
+    50% {
+        box-shadow: 0 0 0 8px rgba(255, 255, 255, 0);
+    }
+}
