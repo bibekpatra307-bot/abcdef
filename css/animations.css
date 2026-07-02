@@ -1,0 +1,130 @@
+/* ============================================
+FILE: /krayvo-website/css/animations.css
+Premium Transitions & Hover Effects
+============================================ */
+
+/* Fade in on scroll */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.product-card {
+    animation: fadeInUp 0.4s ease forwards;
+}
+.product-card:nth-child(1) {
+    animation-delay: 0.02s;
+}
+.product-card:nth-child(2) {
+    animation-delay: 0.04s;
+}
+.product-card:nth-child(3) {
+    animation-delay: 0.06s;
+}
+.product-card:nth-child(4) {
+    animation-delay: 0.08s;
+}
+.product-card:nth-child(5) {
+    animation-delay: 0.1s;
+}
+.product-card:nth-child(6) {
+    animation-delay: 0.12s;
+}
+.product-card:nth-child(7) {
+    animation-delay: 0.14s;
+}
+.product-card:nth-child(8) {
+    animation-delay: 0.16s;
+}
+
+/* Hover lift effect */
+.hover-lift {
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.hover-lift:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-xl);
+}
+
+/* Smooth scale on hover */
+.hover-scale {
+    transition: transform 0.3s ease;
+}
+.hover-scale:hover {
+    transform: scale(1.03);
+}
+
+/* Pulse animation for CTA */
+@keyframes pulse {
+    0%,
+    100% {
+        box-shadow: 0 0 0 0 rgba(99, 102, 241, 0.4);
+    }
+    50% {
+        box-shadow: 0 0 0 12px rgba(99, 102, 241, 0);
+    }
+}
+.pulse-animation {
+    animation: pulse 2s infinite;
+}
+
+/* Shimmer loading */
+@keyframes shimmerBg {
+    0% {
+        background-position: -400px 0;
+    }
+    100% {
+        background-position: 400px 0;
+    }
+}
+.skeleton-card {
+    background: linear-gradient(90deg, var(--bg-tertiary) 25%, var(--border-light) 50%, var(--bg-tertiary) 75%);
+    background-size: 800px 100%;
+    animation: shimmerBg 1.5s infinite;
+}
+
+/* Platform transition overlay */
+.platform-loading-spinner {
+    width: 40px;
+    height: 40px;
+    border: 4px solid var(--border);
+    border-top-color: var(--primary);
+    border-radius: 50%;
+    animation: spin 0.7s linear infinite;
+}
+
+/* Ripple effect on buttons */
+@keyframes ripple {
+    to {
+        transform: scale(4);
+        opacity: 0;
+    }
+}
+.ripple-effect {
+    position: relative;
+    overflow: hidden;
+}
+.ripple-effect::after {
+    content: '';
+    position: absolute;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.3);
+    width: 100px;
+    height: 100px;
+    margin-top: -50px;
+    margin-left: -50px;
+    top: 50%;
+    left: 50%;
+    transform: scale(0);
+    opacity: 1;
+    pointer-events: none;
+}
+.ripple-effect:active::after {
+    animation: ripple 0.6s ease-out;
+}
